@@ -528,6 +528,59 @@ contains the given value.</p>
 </div>
 </div>
 </div>
+<div class="section" id="list-literals">
+<h4>List literals<a class="headerlink" href="#list-literals" title="Permalink to this headline">¶</a></h4>
+<svg class="railroad-diagram" height="101" viewBox="0 0 374.5 101" width="374.5" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(.5 .5)">
+<style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style><g>
+<path d="M20 30v20m10 -20v20m-10 -10h69.5"></path><text style="text-anchor:start" x="20" y="25">listlit</text></g><path d="M89.5 40h10"></path><g>
+<path d="M99.5 40h0.0"></path><path d="M324.5 40h0.0"></path><g class="terminal ">
+<path d="M99.5 40h0.0"></path><path d="M145.0 40h0.0"></path><rect height="22" rx="10" ry="10" width="45.5" x="99.5" y="29"></rect><text x="122.25" y="44">'&#91;'</text></g><path d="M145.0 40h10"></path><g>
+<path d="M155.0 40h0.0"></path><path d="M269.0 40h0.0"></path><path d="M155.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g>
+<path d="M175.0 20h74.0"></path></g><path d="M249.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M155.0 40h20"></path><g>
+<path d="M175.0 40h0.0"></path><path d="M249.0 40h0.0"></path><path d="M175.0 40h10"></path><g class="terminal ">
+<path d="M185.0 40h0.0"></path><path d="M239.0 40h0.0"></path><rect height="22" rx="10" ry="10" width="54.0" x="185.0" y="29"></rect><text x="212.0" y="44">expr</text></g><path d="M239.0 40h10"></path><path d="M185.0 40a10 10 0 0 0 -10 10v10a10 10 0 0 0 10 10"></path><g class="terminal ">
+<path d="M185.0 70h4.25"></path><path d="M234.75 70h4.25"></path><rect height="22" rx="10" ry="10" width="45.5" x="189.25" y="59"></rect><text x="212.0" y="74">','</text></g><path d="M239.0 70a10 10 0 0 0 10 -10v-10a10 10 0 0 0 -10 -10"></path></g><path d="M249.0 40h20"></path></g><path d="M269.0 40h10"></path><g class="terminal ">
+<path d="M279.0 40h0.0"></path><path d="M324.5 40h0.0"></path><rect height="22" rx="10" ry="10" width="45.5" x="279.0" y="29"></rect><text x="301.75" y="44">'&#93;'</text></g></g><path d="M324.5 40h10"></path><path d="M 334.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg><p>A list literal is simply a literal representation of a list.</p>
+<div class="highlight-lkql notranslate"><div class="highlight"><pre><span></span><span class="c"># Simple list literal</span>
+<span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Lists being immutable, lists literals are the primary way to create new lists
+from nothing, with list comprehensions being the way to create new lists from
+existing lists.</p>
+</div>
 <div class="section" id="list-comprehension">
 <h4>List comprehension<a class="headerlink" href="#list-comprehension" title="Permalink to this headline">¶</a></h4>
 <svg class="railroad-diagram" height="101" viewBox="0 0 818.5 101" width="818.5" xmlns="http://www.w3.org/2000/svg">
@@ -1465,8 +1518,8 @@ keyword), and will yield the node(s), but not recurse on them.</p></li>
 </ul>
 <p>In <code class="docutils literal notranslate"><span class="pre">rec</span></code> or in the regular return branch, you can use the unpack operator, or
 <code class="docutils literal notranslate"><span class="pre">*expr</span></code> to “unpack” an expression, eg. return each of its values. Here is for
-example how the <code class="docutils literal notranslate"><span class="pre">superTypes</span></code> selector is expressed:</p>
-<div class="highlight-lkql notranslate"><div class="highlight"><pre><span></span><span class="k">selector</span> <span class="n">superTypes</span>
+example how the <code class="docutils literal notranslate"><span class="pre">super_types</span></code> selector is expressed:</p>
+<div class="highlight-lkql notranslate"><div class="highlight"><pre><span></span><span class="k">selector</span> <span class="n">super_types</span>
     <span class="o">|</span> <span class="n">BaseTypeDecl</span>      <span class="o">=&gt;</span> <span class="k">rec</span> <span class="o">*</span><span class="n">it</span><span class="p">.</span><span class="n">base_types</span><span class="p">()</span>
     <span class="o">|</span> <span class="o">*</span>                 <span class="o">=&gt;</span> <span class="p">()</span>
 </pre></div>
@@ -1478,9 +1531,9 @@ example how the <code class="docutils literal notranslate"><span class="pre">sup
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">parent</span></code>: parent nodes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">children</span></code>: child nodes.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">prevSiblings</span></code>: sibling nodes that are before the current node.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nextSiblings</span></code>: sibling nodes that are after the current node.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">superTypes</span></code>: if the current node is a type, then all its supertypes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prev_siblings</span></code>: sibling nodes that are before the current node.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">next_siblings</span></code>: sibling nodes that are after the current node.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">super_types</span></code>: if the current node is a type, then all its parent types.</p></li>
 </ul>
 </div>
 </div>
